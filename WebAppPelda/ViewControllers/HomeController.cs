@@ -62,18 +62,12 @@ namespace WebAppPelda.Controllers
         [HttpPost]
         public IActionResult EditVasarlo(Vasarlo vasarlo)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(vasarlo);
-            }
-
             string result = new VasarloService().PutVasarlo(vasarlo);
             TempData["SuccessMessage"] = result;
             return RedirectToAction(nameof(EditVasarlo));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult DeleteVasarlo(int id)
         {
             string result = new VasarloService().DeleteVasarlo(id);
