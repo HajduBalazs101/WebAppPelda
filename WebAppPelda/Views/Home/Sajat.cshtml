@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Customer Details:";
+    ViewData["Title"] = "Vásárlók:";
 }
 <h1>@ViewData["Title"]</h1>
 <p>@Model.ToString()</p>
@@ -7,17 +7,21 @@
     <tbody>
     <thead>
         <th>Id</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Score</th>
+        <th>Név</th>
+        <th>Cím</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Pontszam</th>
     </thead>
-@foreach (var customer in Model)
+@foreach (var item in Model)
 {
             <tr>
-            <td><a asp-area="" asp-controller="Home" asp-action="Vasarlo" asp-route-id="@customer.Id">@customer.Id</a></td>
-            <td>@customer.Name</td>
-            <td>@customer.Phone</td>
-            <td>@customer.Score</td>
+            <td><a asp-area="" asp-controller="Home" asp-action="Vasarlo" asp-route-id="@item.Id">@item.Id</a></td>
+            <td>@item.Nev</td>
+            <td>@item.Cim</td>
+            <td>@item.Telefon</td>
+            <td>@item.Email</td>
+            <td>@item.Pontszam</td>
             </tr>       
 }
     </tbody>
