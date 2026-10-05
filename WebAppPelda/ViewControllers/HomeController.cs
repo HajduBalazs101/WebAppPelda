@@ -71,5 +71,14 @@ namespace WebAppPelda.Controllers
             TempData["SuccessMessage"] = result;
             return RedirectToAction(nameof(EditVasarlo));
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteVasarlo(int id)
+        {
+            string result = new VasarloService().DeleteVasarlo(id);
+            TempData["SuccessMessage"] = result;
+            return RedirectToAction(nameof(Sajat));
+        }
     }
 }

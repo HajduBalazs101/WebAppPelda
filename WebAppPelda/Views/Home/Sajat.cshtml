@@ -33,12 +33,16 @@
                 <td>
                     <a class="btn btn-sm btn-secondary" asp-controller="Home" asp-action="EditVasarlo" asp-route-id="@item.Id">Szerkesztés</a>
                 </td>
+                <td>
+                    <form asp-controller="Home" asp-action="DeleteVasarlo" method="post" class="d-inline">
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Biztos törlöd?');">Törlés</button>
+                    </form>
+                </td>
             </tr>
         }
     }
     </tbody>
 </table>
-
-            
 
 
