@@ -1,30 +1,44 @@
-﻿@{
+﻿@model IEnumerable<WebAppPelda.Models.Vasarlo>
+@{
     ViewData["Title"] = "Vásárlók:";
 }
 <h1>@ViewData["Title"]</h1>
-<p>@Model.ToString()</p>
-    <table class="table">
-    <tbody>
+
+<table class="table">
     <thead>
-        <th>Id</th>
-        <th>Név</th>
-        <th>Cím</th>
-        <th>Telefon</th>
-        <th>Email</th>
-        <th>Pontszam</th>
+        <tr>
+            <th>Id</th>
+            <th>Név</th>
+            <th>Cím</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Pontszam</th>
+            <th>Műveletek</th>
+        </tr>
     </thead>
-@foreach (var item in Model)
-{
+    <tbody>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
             <tr>
-            <td><a asp-area="" asp-controller="Home" asp-action="Vasarlo" asp-route-id="@item.Id">@item.Id</a></td>
-            <td>@item.Nev</td>
-            <td>@item.Cim</td>
-            <td>@item.Telefon</td>
-            <td>@item.Email</td>
-            <td>@item.Pontszam</td>
-            </tr>       
-}
+                <td>
+                    <a asp-area="" asp-controller="Home" asp-action="Vasarlo" asp-route-id="@item.Id">@item.Id</a>
+                </td>
+                <td>@item.Nev</td>
+                <td>@item.Cim</td>
+                <td>@item.Telefon</td>
+                <td>@item.Email</td>
+                <td>@item.Pontszam</td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" asp-controller="Home" asp-action="EditVasarlo" asp-route-id="@item.Id">Szerkesztés</a>
+                </td>
+            </tr>
+        }
+    }
     </tbody>
-    </table>
+</table>
+
+            
 
 

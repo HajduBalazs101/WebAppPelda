@@ -52,5 +52,24 @@ namespace WebAppPelda.Controllers
             TempData["SuccessMessage"] = result;
             return RedirectToAction(nameof(CreateVasarlo));
         }
+
+        public IActionResult EditVasarlo(int id)
+        {
+            Vasarlo vasarlo = new VasarloService().GetById(id);
+            return View(vasarlo);
+        }
+
+        [HttpPost]
+        public IActionResult EditVasarlo(Vasarlo vasarlo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vasarlo);
+            }
+
+            string result = new VasarloService().PutVasarlo(vasarlo);
+            TempData["SuccessMessage"] = result;
+            return RedirectToAction(nameof(EditVasarlo));
+        }
     }
 }
